@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AssuntoComponent } from './component/assunto/assunto.component';
 import { AutorComponent } from './component/autor/autor.component';
 import { LivroComponent } from './component/livro/livro.component';
+import { RelatorioComponent } from './component/relatorio/relatorio.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'livro', component: LivroComponent },
   { path: 'autor', component: AutorComponent },
   { path: 'assunto', component: AssuntoComponent },
-  { path: 'relatorio', component: AssuntoComponent }
+  { path: 'relatorio', component: RelatorioComponent }
 ];
 
 @NgModule({

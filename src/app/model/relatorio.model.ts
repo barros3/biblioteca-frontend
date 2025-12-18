@@ -1,4 +1,4 @@
-export interface Relatorio {
+export class Relatorio {
     codl?: number;
     titulo?: string;
     autor?: string;
@@ -6,6 +6,6 @@ export interface Relatorio {
     editora?: string;
     edicao?: number;
     anoPublicacao?: string;
-    valor?: number;    
+    valor?: number;
     atualizadoEm?: string;
 }
