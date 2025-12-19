@@ -35,15 +35,12 @@ export class RelatorioPipe implements PipeTransform {
   
   private formatData(value: any): string {
     try {
-      // Tenta converter para data
       const date = new Date(value);
       
-      // Verifica se a data é válida
       if (isNaN(date.getTime())) {
         return 'Data inválida';
       }
       
-      // Formata data e hora
       const dataStr = date.toLocaleDateString('pt-BR');
       const horaStr = date.toLocaleTimeString('pt-BR', { 
         hour: '2-digit', 

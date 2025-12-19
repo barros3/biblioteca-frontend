@@ -11,10 +11,10 @@ import { LivroService } from 'src/app/service/livro.service';
 
 @Component({
   selector: 'app-modal-cadastra-livro',
-  templateUrl: './modal.cadastrar.livro.component.html',
-  styleUrls: ['./modal.cadastrar.livro.component.sass']
+  templateUrl: './modal.livro.component.html',
+  styleUrls: ['./modal.livro.component.sass']
 })
-export class ModalCadastrarLivroComponent implements OnInit {
+export class ModalLivroComponent implements OnInit {
   
   @Input() title: string | undefined;
   currentDate!: string;
@@ -40,7 +40,7 @@ export class ModalCadastrarLivroComponent implements OnInit {
       livro: Livro,
       actionType: ActionType
     },
-    private dialogRef: MatDialogRef<ModalCadastrarLivroComponent>,
+    private dialogRef: MatDialogRef<ModalLivroComponent>,
     private dialogError: MatDialog,
     private router: Router,
     private livroService: LivroService,
@@ -94,7 +94,7 @@ export class ModalCadastrarLivroComponent implements OnInit {
         this.detailLivro();
         break;
       case ActionType.CREATE:
-        this.saveLivro();
+        this.salvarLivro();
         break;
       case ActionType.EDIT:
         this.updateLivro();
@@ -108,7 +108,7 @@ export class ModalCadastrarLivroComponent implements OnInit {
   }
 
   // 1. Detalhar Livro (VIEW)
-    private detailLivro(): void {
+  private detailLivro(): void {
     if (!this.livro.titulo) return;
     
     this.isLoading = true;
@@ -354,11 +354,11 @@ export class ModalCadastrarLivroComponent implements OnInit {
     
     // Prepara objeto completo para enviar
   const livroParaSalvar = {
-    codL: this.livro.codl, // Explicitamente pegar o codL primeiro
-    ...this.livro,
-    autoresIds: this.selectedAutores,
-    assuntosIds: this.selectedAssuntos
-};
+      codL: this.livro.codl, // Explicitamente pegar o codL primeiro
+      ...this.livro,
+      autoresIds: this.selectedAutores,
+      assuntosIds: this.selectedAssuntos
+  };
     
     console.log('Enviando livro:', livroParaSalvar);
     
@@ -405,7 +405,8 @@ removerAssunto(assuntoId: number): void {
   confirmDelete(): void {
     this.salvarAssunto();
   }
-    salvarAssunto(): void {
+  
+  salvarAssunto(): void {
     this.isLoading = true;
     
     if (this.data.actionType === 'create') {

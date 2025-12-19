@@ -12,14 +12,14 @@ import { Router } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AssuntoComponent } from './component/assunto/assunto.component';
-import { ModalCadastrarAssuntoComponent } from './component/assunto/modal.cadastrar.assunto.component';
 import { AutorComponent } from './component/autor/autor.component';
-import { ModalCadastrarAutorComponent } from './component/autor/modal.cadastrar.autor.component';
 import { LivroComponent } from './component/livro/livro.component';
-import { ModalCadastrarLivroComponent } from './component/livro/modal.cadastrar.livro.component';
+import { ModalLivroComponent } from './component/livro/modal.livro.component';
 import { RelatorioComponent } from './component/relatorio/relatorio.component';
 import { ModalerrorComponent } from './modalerror/modalerror.component';
 
+import { ModalAssuntoComponent } from './component/assunto/modal.assunto.component';
+import { ModalAutorComponent } from './component/autor/modal.autor.component';
 import { FilterPipe } from './filter.pipe';
 import { RelatorioPipe } from './relatorio.pipe';
 
@@ -27,11 +27,11 @@ import { RelatorioPipe } from './relatorio.pipe';
   declarations: [
     AppComponent,
     AssuntoComponent,
-    ModalCadastrarAssuntoComponent,
+    ModalAssuntoComponent,
     AutorComponent,
-    ModalCadastrarAutorComponent,
+    ModalAutorComponent,
     LivroComponent,
-    ModalCadastrarLivroComponent,
+    ModalLivroComponent,
     RelatorioComponent,
     ModalerrorComponent,
     FilterPipe,

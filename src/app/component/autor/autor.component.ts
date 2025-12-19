@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActionType } from 'src/app/model/action-type.enum';
 import { Autor } from 'src/app/model/autor.model';
 import { AutorService } from 'src/app/service/autor.service';
-import { ModalCadastrarAutorComponent } from './modal.cadastrar.autor.component';
+import { ModalAutorComponent } from './modal.autor.component';
 
 @Component({
   selector: 'app-autor',
@@ -62,7 +62,7 @@ export class AutorComponent implements OnInit {
         break;
     }
 
-    const dialogRef = this.dialog.open(ModalCadastrarAutorComponent, {
+    const dialogRef = this.dialog.open(ModalAutorComponent, {
       width: width,
       data: {
         title: title,

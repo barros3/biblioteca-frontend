@@ -1,21 +1,21 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Autor } from 'src/app/model/autor.model';
-import { AutorService } from 'src/app/service/autor.service';
+import { Assunto } from 'src/app/model/assunto.model';
+import { AssuntoService } from 'src/app/service/assunto.service';
 
 export interface DialogData {
   title: string;
-  autor: Autor;
+  assunto: Assunto;
   actionType: string;
 }
 
 @Component({
-  selector: 'app-modal-cadastrar-autor',
-  templateUrl: './modal.cadastrar.autor.component.html',
-  styleUrls: ['./modal.cadastrar.autor.component.sass']
+  selector: 'app-modal-assunto',
+  templateUrl: './modal.assunto.component.html',
+  styleUrls: ['./modal.assunto.component.sass']
 })
-export class ModalCadastrarAutorComponent implements OnInit {
-  autor: Autor = new Autor();
+export class ModalAssuntoComponent implements OnInit {
+  assunto: Assunto = new Assunto();
   title: string = '';
   actionType: string = '';
   
@@ -30,71 +30,71 @@ export class ModalCadastrarAutorComponent implements OnInit {
   }
 
   constructor(
-    public dialogRef: MatDialogRef<ModalCadastrarAutorComponent>,
+    public dialogRef: MatDialogRef<ModalAssuntoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private autorService: AutorService
+    private assuntoService: AssuntoService
   ) {
     this.title = data.title;
-    this.autor = { ...data.autor };
+    this.assunto = { ...data.assunto };
     this.actionType = data.actionType;
   }
 
   ngOnInit(): void {
     // Se for visualização, garante que temos os dados completos
-    if (this.isViewMode && this.autor.codAu) {
-      this.loadAutorDetails();
+    if (this.isViewMode && this.assunto.codAs) {
+      this.loadAssuntoDetails();
     }
   }
 
-  loadAutorDetails(): void {
-    if (!this.autor.codAu) return;
+  loadAssuntoDetails(): void {
+    if (!this.assunto.codAs) return;
     
     this.isLoading = true;
-    this.autorService.getByAutorId(this.autor.codAu).subscribe({
-      next: (autorCompleto) => {
-        this.autor = autorCompleto;
+    this.assuntoService.getAssuntoId(this.assunto.codAs).subscribe({
+      next: (assuntoCompleto) => {
+        this.assunto = assuntoCompleto;
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Erro ao carregar detalhes do autor:', error);
+        console.error('Erro ao carregar detalhes do assunto:', error);
         this.isLoading = false;
       }
     });
   }
 
-  salvarAutor(): void {
+  salvarAssunto(): void {
     this.isLoading = true;
     
     if (this.actionType === 'create') {
-      this.autorService.save(this.autor).subscribe({
+      this.assuntoService.save(this.assunto).subscribe({
         next: (response) => {
           this.dialogRef.close('created');
           this.isLoading = false;
         },
         error: (error) => {
-          console.error('Erro ao criar autor:', error);
+          console.error('Erro ao criar assunto:', error);
           this.isLoading = false;
         }
       });
     } else if (this.actionType === 'edit') {
-      this.autorService.update(this.autor).subscribe({
+      this.assuntoService.update(this.assunto).subscribe({
         next: (response) => {
           this.dialogRef.close('updated');
           this.isLoading = false;
         },
         error: (error) => {
-          console.error('Erro ao atualizar autor:', error);
+          console.error('Erro ao atualizar assunto:', error);
           this.isLoading = false;
         }
       });
     } else if (this.actionType === 'delete') {
-      this.autorService.remove(this.autor!).subscribe({
+      this.assuntoService.remove(this.assunto!).subscribe({
         next: (response) => {
           this.dialogRef.close('deleted');
           this.isLoading = false;
         },
         error: (error) => {
-          console.error('Erro ao remover autor:', error);
+          console.error('Erro ao remover assunto:', error);
           this.isLoading = false;
         }
       });
@@ -106,6 +106,6 @@ export class ModalCadastrarAutorComponent implements OnInit {
   }
 
   confirmDelete(): void {
-    this.salvarAutor();
+    this.salvarAssunto();
   }
 }

@@ -6,7 +6,7 @@ import { ModalerrorComponent } from 'src/app/modalerror/modalerror.component';
 import { ActionType } from 'src/app/model/action-type.enum';
 import { Livro } from 'src/app/model/livro.model';
 import { LivroService } from 'src/app/service/livro.service';
-import { ModalCadastrarLivroComponent } from './modal.cadastrar.livro.component';
+import { ModalLivroComponent } from './modal.livro.component';
 
 @Component({
   selector: 'app-livro',
@@ -37,91 +37,15 @@ export class LivroComponent {
   getLivros() {
     this.livros$ = this.livroService.getLivros();
   }
-  
-  // addLivro(){
-  //   this.livroService.save(this.livro);
-  // }
 
   openLivroModal(): void {
     this.showLivroModal = true;
   }
 
-  // editLivro(livro: Livro) {
-  //   this.selectedLivro = { ...livro };
-  //   this.showModal = true;
-  // }
-
   showLivro(livro: Livro) {
     this.selectedLivro = { ...livro };
     this.showModal = true;
   }
-
-  // openModal(isEdit: string) {
-
-  //   let title: string = '';
-  //   let livroModel: Livro = new Livro();
-   
-  //   if(isEdit == 'view') {
-  //     title = 'Detalhar Livro';
-  //     livroModel = this.livro;
-  //   }
-
-  //   if(isEdit == 'add') {
-  //     title = 'Cadastrar Livro';
-  //     livroModel = this.livro;
-  //   } else {
-  //     title = 'Editar Livro';
-  //     livroModel = this.selectedLivro;
-  //   }
-
-  //   const dialogRef = this.dialog.open(ModalCadastrarLivroComponent, {
-  //     data: {
-  //       title: title,
-  //       livro: livroModel
-  //     }
-  //   });
-    
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
-
-//   openModal(actionType: ActionType, livro?: Livro): void {
-//   let title = '';
-  
-//   switch (actionType) {
-//     case ActionType.VIEW:
-//       title = 'Detalhes do Livro';
-//       break;
-//     case ActionType.CREATE:
-//       title = 'Cadastrar Livro';
-//       livro = new Livro(); // Novo livro vazio
-//       break;
-//     case ActionType.EDIT:
-//       title = 'Editar Livro';
-//       break;
-//     case ActionType.DELETE:
-//       title = 'Remover Livro';
-//       break;
-//   }
-
-//   const dialogRef = this.dialog.open(ModalCadastrarLivroComponent, {
-//     width: actionType === ActionType.VIEW ? '700px' : '500px',
-//     data: {
-//       title: title,
-//       livro: livro || new Livro(),
-//       actionType: actionType
-//     }
-//   });
-  
-//   dialogRef.afterClosed().subscribe(result => {
-//     console.log(`Modal fechado com resultado: ${result}`);
-    
-//     if (result && ['created', 'updated', 'deleted'].includes(result)) {
-//       this.getLivros(); // Recarrega a lista
-//     }
-//   });
-// }
 openModal(actionType: ActionType, livro?: Livro): void {
   let title = '';
   let width = '500px';
@@ -145,7 +69,7 @@ openModal(actionType: ActionType, livro?: Livro): void {
       break;
   }
 
-  const dialogRef = this.dialog.open(ModalCadastrarLivroComponent, {
+  const dialogRef = this.dialog.open(ModalLivroComponent, {
     width: width,
     data: {
       title: title,
@@ -179,10 +103,7 @@ viewLivro(livro: Livro): void {
   this.openModal(ActionType.VIEW, livro);
 }
 
-// editLivro(livro: Livro): void {
-//   this.openModal(ActionType.EDIT, livro);
-// }
-  editLivro(livro: Livro): void {
+editLivro(livro: Livro): void {
     console.log('Editando livro:', livro);
     
     // Carrega os dados COMPLETOS para edição
@@ -193,7 +114,6 @@ viewLivro(livro: Livro): void {
       },
       error: (error) => {
         console.error('Erro ao carregar livro para edição:', error);
-        // Fallback: usa dados básicos
         this.openModal(ActionType.EDIT, livro);
       }
     });
@@ -207,22 +127,6 @@ removeLivro(livro: Livro): void {
   this.openModal(ActionType.DELETE, livro);
 }
 
-  // removeLivro(livro: Livro) {
-  //   this.livroService.remove(livro).subscribe((response) => {
-
-  //     const error = new ResponseError(
-  //       'Livro '+ livro.titulo
-  //        + ' removido com sucesso!',
-  //        'Data: ' + this.formatDate(new Date()),
-  //       'Booa!'
-  //     );
-      
-  //     this.openErrorModal(error);
-
-  //   }, (error) => {
-  //     console.error(`Error removing livro: ${error}`);
-  //   });
-  // }
   private openErrorModal(error: any) {
     const dialogRef = this.dialogError.open(ModalerrorComponent, {
       width: '500px',

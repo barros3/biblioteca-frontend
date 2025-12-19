@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActionType } from 'src/app/model/action-type.enum';
 import { Assunto } from 'src/app/model/assunto.model';
 import { AssuntoService } from 'src/app/service/assunto.service';
-import { ModalCadastrarAssuntoComponent } from './modal.cadastrar.assunto.component';
+import { ModalAssuntoComponent } from './modal.assunto.component';
 
 @Component({
   selector: 'app-assunto',
@@ -62,7 +62,7 @@ export class AssuntoComponent implements OnInit {
         break;
     }
 
-    const dialogRef = this.dialog.open(ModalCadastrarAssuntoComponent, {
+    const dialogRef = this.dialog.open(ModalAssuntoComponent, {
       width: width,
       data: {
         title: title,

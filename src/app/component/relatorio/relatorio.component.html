@@ -37,8 +37,8 @@
             <td class="text-center">{{relatorio.codigo || 'N/A'}}</td>
             <td class="text-center">{{relatorio.autor || 'Não informado'}}</td>
             <td class="text-center">{{relatorio.livros || 'Não informado'}}</td>
-            <td class="text-center">{{relatorio.dataAtualizacao | filter:'data'}}</td>
-            <td class="text-center">{{relatorio.vendaTotal | filter:'valor'}}</td>
+            <td class="text-center">{{relatorio.dataAtualizacao}}</td>
+            <td class="text-center">{{relatorio.vendaTotal | formatRelatorio:'valor'}}</td>
           <tr *ngIf="relatorios.length === 0">
             <td colspan="6" class="text-center">Nenhum relatório encontrado.</td>
           </tr>
