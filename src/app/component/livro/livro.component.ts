@@ -22,7 +22,7 @@ export class LivroComponent {
   livros: Livro[] = [];
   showModal: boolean = false;
   selectedLivro: Livro = new Livro();
-  searchId = '';
+  searchTerm = '';
   currentDate!: string;
 
   constructor(private livroService: LivroService,

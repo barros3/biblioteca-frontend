@@ -11,7 +11,7 @@
     </div>
     <div class="form-row">
       <div class="col-md-4">
-        <input type="text" class="form-control" [(ngModel)]="searchId" placeholder="Pesquisar por ID">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Pesquisar por ID">
       </div>
     </div>
     <div class="form-row"><br /></div>
@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let livro of livros | filter: searchId">
+        <tr *ngFor="let livro of livros | filter: searchTerm:'livros'">
           <td class="text-center">{{livro.titulo}}</td>
           <td class="text-center">{{livro.editora}}</td>
           <td class="text-center">{{livro.edicao}}</td>

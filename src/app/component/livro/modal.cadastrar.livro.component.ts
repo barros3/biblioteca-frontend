@@ -443,4 +443,14 @@ removerAssunto(assuntoId: number): void {
       });
     }
   }
+
+  onValorChange(valorFormatado: string) {
+    const valorLimpo = valorFormatado
+      .replace('R$', '')
+      .replace('.', '')
+      .replace(',', '.')
+      .trim();
+    
+    this.livro.valor = parseFloat(valorLimpo) || 0;
+  }
 }

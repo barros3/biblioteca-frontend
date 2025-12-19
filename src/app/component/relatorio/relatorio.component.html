@@ -10,12 +10,6 @@
       </div>
     </div>
     
-    <div class="form-row">
-      <div class="col-md-4">
-        <input type="text" class="form-control" [(ngModel)]="searchNome" placeholder="Pesquisar por autor">
-      </div>
-    </div>
-    
     <div class="form-row"><br /></div>
     
     <!-- Loading State -->
@@ -43,9 +37,8 @@
             <td class="text-center">{{relatorio.codigo || 'N/A'}}</td>
             <td class="text-center">{{relatorio.autor || 'Não informado'}}</td>
             <td class="text-center">{{relatorio.livros || 'Não informado'}}</td>
-            <td class="text-center">{{relatorio.dataAtualizacao || 'Não informado'}}</td>
-            <td class="text-center">{{relatorio.vendaTotal || '0.00'}}</td>
-          </tr>
+            <td class="text-center">{{relatorio.dataAtualizacao | filter:'data'}}</td>
+            <td class="text-center">{{relatorio.vendaTotal | filter:'valor'}}</td>
           <tr *ngIf="relatorios.length === 0">
             <td colspan="6" class="text-center">Nenhum relatório encontrado.</td>
           </tr>

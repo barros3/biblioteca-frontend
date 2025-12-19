@@ -19,7 +19,9 @@ import { LivroComponent } from './component/livro/livro.component';
 import { ModalCadastrarLivroComponent } from './component/livro/modal.cadastrar.livro.component';
 import { RelatorioComponent } from './component/relatorio/relatorio.component';
 import { ModalerrorComponent } from './modalerror/modalerror.component';
-import { FilterPipe } from './pipe.filter';
+
+import { FilterPipe } from './filter.pipe';
+import { RelatorioPipe } from './relatorio.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { FilterPipe } from './pipe.filter';
     ModalCadastrarLivroComponent,
     RelatorioComponent,
     ModalerrorComponent,
-    FilterPipe
+    FilterPipe,
+    RelatorioPipe
   ],
   imports: [
     AppRoutingModule,

@@ -12,7 +12,7 @@ import { ModalCadastrarAutorComponent } from './modal.cadastrar.autor.component'
 })
 export class AutorComponent implements OnInit {
   autores: Autor[] = [];
-  searchNome = '';
+  searchTerm = '';
   isLoading = false;
 
   constructor(

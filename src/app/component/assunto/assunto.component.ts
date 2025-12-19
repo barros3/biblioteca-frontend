@@ -12,7 +12,7 @@ import { ModalCadastrarAssuntoComponent } from './modal.cadastrar.assunto.compon
 })
 export class AssuntoComponent implements OnInit {
   assuntos: Assunto[] = [];
-  searchDescricao = '';
+  searchTerm = '';
   isLoading = false;
 
   constructor(
